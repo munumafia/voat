@@ -481,6 +481,37 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:Voat.DependencyResolution.StructureMapDependencyScope">
+            <summary>
+            The structure map dependency scope.
+            </summary>
+        </member>
+        <member name="T:Voat.DependencyResolution.StructureMapWebApiDependencyResolver">
+            <summary>
+            The structure map dependency resolver.
+            </summary>
+        </member>
+        <member name="T:Voat.DependencyResolution.StructureMapWebApiDependencyScope">
+            <summary>
+            The structure map web api dependency scope.
+            </summary>
+        </member>
+        <member name="M:Voat.DependencyResolution.StructureMapWebApiDependencyResolver.#ctor(StructureMap.IContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Voat.DependencyResolution.StructureMapWebApiDependencyResolver"/> class.
+            </summary>
+            <param name="container">
+            The container.
+            </param>
+        </member>
+        <member name="M:Voat.DependencyResolution.StructureMapWebApiDependencyResolver.BeginScope">
+            <summary>
+            The begin scope.
+            </summary>
+            <returns>
+            The System.Web.Http.Dependencies.IDependencyScope.
+            </returns>
+        </member>
         <member name="M:Voat.Utils.CacheHandler.Register(System.String,System.Func{System.Object},System.TimeSpan,System.Int32)">
             <summary>
             Registers a function for cache. Locks by key and generates data for return from function

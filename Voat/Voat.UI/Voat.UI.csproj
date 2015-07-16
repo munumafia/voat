@@ -66,6 +66,9 @@
     <Reference Include="MarkdownDeep">
       <HintPath>..\packages\MarkdownDeep.NET.1.5\lib\.NetFramework 3.5\MarkdownDeep.dll</HintPath>
     </Reference>
+    <Reference Include="MediatR">
+      <HintPath>..\packages\MediatR.1.0.0.0\lib\portable-net45+win+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\MediatR.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -123,6 +126,9 @@
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -138,6 +144,15 @@
     </Reference>
     <Reference Include="RouteDebugger">
       <HintPath>..\packages\routedebugger.2.1.4.0\lib\net40\RouteDebugger.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.3.1.6.186\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4">
+      <HintPath>..\packages\structuremap.3.1.6.186\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Web">
+      <HintPath>..\packages\structuremap.web.3.1.0.133\lib\net40\StructureMap.Web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -211,6 +226,9 @@
     <Reference Include="WebActivator">
       <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebApiThrottle, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WebApiThrottle.1.4.0\lib\net45\WebApiThrottle.dll</HintPath>
       <Private>True</Private>
@@ -230,6 +248,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="App_Start\StructuremapWebApi.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -259,6 +279,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Caching\ICacheableQuery.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AjaxGatewayController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -270,6 +291,14 @@
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\SetsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DependencyResolution\ControllerConvention.cs" />
+    <Compile Include="DependencyResolution\DefaultRegistry.cs" />
+    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="DependencyResolution\StructureMapScopeModule.cs" />
+    <Compile Include="DependencyResolution\StructureMapWebApiDependencyResolver.cs" />
+    <Compile Include="DependencyResolution\StructureMapWebApiDependencyScope.cs" />
+    <Compile Include="Caching\ICacheable.cs" />
     <Compile Include="MessagingHub.cs" />
     <Compile Include="Models\AddSet.cs" />
     <Compile Include="Models\AddSubmissionSelfpost.cs" />
@@ -317,6 +346,17 @@
       <DependentUpon>VoatEntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\voatEntities.cs" />
+    <Compile Include="CQRS\Comments\Commands\AddRemovalLog.cs" />
+    <Compile Include="CQRS\Comments\Commands\DeleteComment.cs" />
+    <Compile Include="CQRS\Comments\Events\CommentDeletedByModerator.cs" />
+    <Compile Include="CQRS\Comments\Handlers\AddRemovalLogHandler.cs" />
+    <Compile Include="CQRS\Comments\Handlers\CommentDeletedByModeratorHandler.cs" />
+    <Compile Include="CQRS\Comments\Handlers\DeleteCommentHandler.cs" />
+    <Compile Include="CQRS\Comments\Queries\FindCommentById.cs" />
+    <Compile Include="CQRS\Comments\Handlers\FindCommentByIdHandler.cs" />
+    <Compile Include="Persistence\IReadOnlyDbContext.cs" />
+    <Compile Include="Persistence\IReadWriteDbContext.cs" />
+    <Compile Include="Persistence\IVoatDbContext.cs" />
     <Compile Include="Utils\CacheHandler.cs" />
     <Compile Include="Utils\CommentCounter.cs" />
     <Compile Include="Utils\Components\ContentFilters.cs" />
@@ -837,7 +877,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="CQRS\Queries\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
